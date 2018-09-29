@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
 	// As a public variable will show up in the editor as a field.
 	public float speed;
 	public Text countText;
+	public Text winText;
 
 	private Rigidbody2D rb2d;
 	private int count;
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 		rb2d = GetComponent<Rigidbody2D>();
 		count = 0;
 		setCountText();
+		winText.text = "";
 	}
 
 	private void FixedUpdate()
@@ -40,5 +42,8 @@ public class PlayerController : MonoBehaviour {
 
 	private void setCountText() {
 		countText.text = "Count: " + count.ToString();
+		if (count >= 8) {
+			winText.text = "You Win!";
+		}
 	}
 }
